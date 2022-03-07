@@ -1,5 +1,6 @@
+import matplotlib.pyplot as plt
 import numpy as np
-# import tensorflow as tf
+import tensorflow as tf
 # import math
 
 
@@ -49,8 +50,8 @@ def fixed_point_iteration(f, df, x0, t, a, method='default'):
     xt = np.zeros(t+1)
     xt[0] = x0
     for i in range(1, t+1):
-        xt[i] = a * f(xt[i-1]) + xt[i-1]
-        print(xt[i])
+        xt[i] = a * df(xt[i-1]) + xt[i-1]
+        # print(xt[i])
 
     if method == 'steffensens_method':
         pass  # <complete>
@@ -60,9 +61,26 @@ def fixed_point_iteration(f, df, x0, t, a, method='default'):
 
 
 #################################
-f, x0, a = lambda x: np.log(x)/(1+x), 0.1, -0.5
-newtonRaphsonIteration = newton_raphson_iteration(f, df, x0, t)
-fixedPointIteration = fixed_point_iteration(f, x0, t, a)
+# np.log uses ln(x) and np.log10 uses log_10(x)
+def f(x): return np.log(x)/(1+x)
+def df(x): return (1+(1/x)-np.log(x)) / ((x+1)**2)
+# def df(x): return (1+x-x*np.log(x)) / (x*((x+1)**2))
+# def df2(x): return (2*(x**2)*np.log(x) - 1 -
+#                     4*x - 3*(x**2)) / ((x**2)*(1+x)**3)
+
+
+x0 = 0.1
+t = 20
+a = -0.5
+eps = 1e-15
+# xt1, f_of_xt1 = newton_raphson_iteration(f, df, x0, t, method='default')
+# print('xt1: ', xt1)
+# print('f_of_xt1: ', f_of_xt1)
+# print('|f_of_xt1| < 1e-15: ', np.abs(f_of_xt1) < eps)
+
+xt2, f_of_xt2 = fixed_point_iteration(f, df, x0, t, a, method='default')
+print('xt2: ', xt2)
+print('f_of_xt2: ', f_of_xt2)
 #
 #
 #
