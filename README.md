@@ -1,6 +1,6 @@
 # STA410 | Programming Portfolio Assignment 3
 
-## **3.0 - Nonlinearity s| $$b=f(x)\not=Ax$$**
+## **3.0 - Nonlinearity | $b=f(x)\not=Ax$**
 ---
 
 A more interesting problem than $Ax=b$ is the problem $g(x)=b$ for a ***nonlinear function*** $g$.  Such ***nonlinear equations*** are a general version form of a wide set of problems. However, a most frequently encountered instance of the problem is
@@ -393,6 +393,7 @@ A presentation of generalized IRLS methods will be covered in the "Gauss-Newton"
 - The implementation of an IRLS method will be addressed in the second problem of [Programming Portfolio Assignment 3](#cell-opt).
 
 ====
+
 ## 3.1.2 The Secant Method ([Return to TOC](#cell-TOC-opt)) 
 
 ---
